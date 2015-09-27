@@ -3,15 +3,18 @@ using UnityEngine;
 
 namespace ModTools
 {
-    public class ModTools : IMod
+    public class Main : IMod
     {
         private GameObject _go;
 
         public void onEnabled()
         {
-            _go = new GameObject();
+            _go = new GameObject("Mod Tools");
 
+            _go.AddComponent<ObjectBrowser>();
             _go.AddComponent<Console>();
+
+            Debug.Log(_go);
         }
 
         public void onDisabled()
