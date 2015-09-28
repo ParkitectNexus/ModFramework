@@ -52,7 +52,7 @@ namespace ModTools.Tools
 
         readonly List<Log> logs = new List<Log>();
         Vector2 scrollPosition;
-        bool visible;
+        bool visible = false;
         bool collapse;
 
         // Visual elements:
@@ -72,16 +72,16 @@ namespace ModTools.Tools
         static readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
 
         readonly Rect titleBarRect = new Rect(0, 0, 10000, 20);
-        Rect windowRect = new Rect(margin, margin, Screen.width - (margin * 2), Screen.height - (margin * 2));
+        Rect windowRect = new Rect(Screen.width / 1.66f + margin, margin, Screen.width / 1.66f - (margin * 2), Screen.height - (margin * 2));
 
         void OnEnable()
         {
-			Application.logMessageReceived += HandleLog;
+            Application.logMessageReceived += HandleLog;
         }
 
         void OnDisable()
         {
-			Application.logMessageReceived -= HandleLog;
+            Application.logMessageReceived -= HandleLog;
         }
 
         void Update()

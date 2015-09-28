@@ -1,4 +1,5 @@
 ﻿using ModTools.Tools;
+using ModTools.Tools.ObjectBrowser;
 using UnityEngine;
 
 namespace ModTools
@@ -19,7 +20,7 @@ namespace ModTools
 
         public void onDisabled()
         {
-
+            Object.Destroy(_go);
         }
 
         public string Name { get { return "ModTools"; } }

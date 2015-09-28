@@ -49,7 +49,11 @@
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Console.cs" />
-    <Compile Include="Tools\ObjectBrowser.cs" />
+    <Compile Include="Tools\ObjectBrowser\Filter.cs" />
+    <Compile Include="Tools\ObjectBrowser\ObjectBrowser.cs" />
+    <Compile Include="Tools\ObjectBrowser\ObjectNode.cs" />
+    <Compile Include="Tools\ObjectBrowser\Tree.cs" />
+    <Compile Include="Tools\ObjectBrowser\TreeBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
