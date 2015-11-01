@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace ModTools.Tools.ObjectBrowser
 {
     class ObjectBrowser : MonoBehaviour
     {
-        private KeyCode _toggleKey = KeyCode.BackQuote;
+        private KeyCode _toggleKey = KeyCode.F9;
         private bool _visible = false;
 
         // UI stuff

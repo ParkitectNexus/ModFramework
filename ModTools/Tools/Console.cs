@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace ModTools.Tools
@@ -24,7 +20,7 @@ namespace ModTools.Tools
         /// <summary>
         /// The hotkey to show and hide the console window.
         /// </summary>
-        public KeyCode toggleKey = KeyCode.BackQuote;
+        public KeyCode toggleKey = KeyCode.F8;
 
         /// <summary>
         /// Whether to open the window by shaking the device (mobile-only).
