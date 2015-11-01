@@ -6,7 +6,9 @@ namespace ModTools.Tools.ObjectBrowser
 {
     class ObjectBrowser : MonoBehaviour
     {
-        private KeyCode _toggleKey = KeyCode.F9;
+        private KeyCode _toggleKey = KeyCode.BackQuote;
+        // same as toggleKey on german keyboards 
+        private KeyCode _toggleKeyDE = KeyCode.Backslash;
         private bool _visible = false;
 
         // UI stuff
@@ -33,7 +35,7 @@ namespace ModTools.Tools.ObjectBrowser
 
         private void Update()
         {
-            if (Input.GetKeyDown(_toggleKey))
+            if (Input.GetKeyDown(_toggleKey) || Input.GetKeyDown(_toggleKeyDE))
             {
                 _visible = !_visible;
             }

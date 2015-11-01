@@ -20,7 +20,9 @@ namespace ModTools.Tools
         /// <summary>
         /// The hotkey to show and hide the console window.
         /// </summary>
-        public KeyCode toggleKey = KeyCode.F8;
+        public KeyCode toggleKey = KeyCode.BackQuote;
+        // same as toggleKey on german keyboards 
+        public KeyCode toggleKeyDE = KeyCode.Backslash;
 
         /// <summary>
         /// Whether to open the window by shaking the device (mobile-only).
@@ -82,7 +84,7 @@ namespace ModTools.Tools
 
         void Update()
         {
-            if (Input.GetKeyDown(toggleKey))
+            if (Input.GetKeyDown(toggleKey) || Input.GetKeyDown(toggleKeyDE))
             {
                 visible = !visible;
             }
@@ -99,7 +101,6 @@ namespace ModTools.Tools
             {
                 return;
             }
-
             windowRect = GUILayout.Window(123456, windowRect, DrawConsoleWindow, windowTitle);
         }
 
