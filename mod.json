@@ -1,1 +1,8 @@
-{"AssetBundleDir":null,"AssetBundlePrefix":null,"BaseDir":"ModTools","ClassName":"Main","CompilerVersion":"v4.0","CodeFiles":[],"DevelopmentBuildPath":"bin/build-150928193152to.dll","IsDevelopment":true,"IsEnabled":true,"Name":"Mod Tools","NameSpace":"ModTools","Project":"ModTools.csproj","Tag":null,"ReferencedAssemblies":[],"Repository":null}
+{
+    "BaseDir": "ModTools",
+    "EntryPoint": "ModTools.Main",
+    "IsEnabled": true,
+    "IsDevelopment": true,
+    "Name": "Mod Tools",
+    "Project": "ModTools.csproj"
+}
