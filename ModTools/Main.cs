@@ -12,7 +12,7 @@ namespace ModTools
         {
             _go = new GameObject("ModTools");
 
-            _go.AddComponent<SettingsFull>();
+            _go.AddComponent<Tools.Settings.Global>();
             _go.AddComponent<ObjectBrowser>();
             _go.AddComponent<Console>();
 

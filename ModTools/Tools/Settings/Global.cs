@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace ModTools.Tools
+namespace ModTools.Tools.Settings
 {
-    class SettingsFull : MonoBehaviour
+    class Global : MonoBehaviour
     {
 
         #region Inspector Settings

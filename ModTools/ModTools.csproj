@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\SettingsFull.cs" />
+    <Compile Include="Tools\Settings\Global.cs" />
     <Compile Include="Tools\Console.cs" />
     <Compile Include="Tools\ObjectBrowser\Filter.cs" />
     <Compile Include="Tools\ObjectBrowser\ObjectBrowser.cs" />
@@ -56,9 +56,7 @@
     <Compile Include="Tools\ObjectBrowser\Tree.cs" />
     <Compile Include="Tools\ObjectBrowser\TreeBuilder.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -25,7 +25,7 @@ namespace ModTools.Tools.ObjectBrowser
 
         private List<GameObject> open = new List<GameObject>();
 
-        private SettingsFull _settings = null;
+        private Settings.Global _settings = null;
 
         void Start()
         {
@@ -38,7 +38,7 @@ namespace ModTools.Tools.ObjectBrowser
         {
             while (_settings == null)
             {
-                _settings = FindObjectOfType<SettingsFull>();
+                _settings = FindObjectOfType<Settings.Global>();
                 yield return new UnityEngine.WaitForSeconds(1);
             }
         }

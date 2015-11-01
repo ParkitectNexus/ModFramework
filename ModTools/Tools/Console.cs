@@ -71,7 +71,7 @@ namespace ModTools.Tools
             Screen.height - (margin * 2)
         );
 
-        public SettingsFull _settings = null;
+        public Settings.Global _settings = null;
 
         public void Start()
         {
@@ -83,7 +83,7 @@ namespace ModTools.Tools
         {
             while (_settings == null)
             {
-                _settings = FindObjectOfType<SettingsFull>();
+                _settings = FindObjectOfType<Tools.Settings.Global>();
                 yield return new UnityEngine.WaitForSeconds(1);
             }
         }
