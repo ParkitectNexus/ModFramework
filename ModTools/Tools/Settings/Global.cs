@@ -30,7 +30,7 @@ namespace ModTools.Tools.Settings
         /// <summary>
         /// Show objectbrowser? Can be toggled in settings gui.
         /// </summary>
-        public bool showObjectBrowser = false;
+        public bool showObjectBrowser = true;
 
         /// <summary>
         /// Show pressed key codes as debug message.

@@ -64,10 +64,16 @@ namespace ModTools.Tools
         static readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
 
         readonly Rect titleBarRect = new Rect(0, 0, 10000, 20);
-        Rect windowRect = new Rect(
+        /*Rect windowRect = new Rect(
             Screen.width / 2 - (Screen.width / 1.66f - (margin * 2)) / 2 + margin, 
             margin, 
             Screen.width / 1.66f - (margin * 2), 
+            Screen.height - (margin * 2)
+        );*/
+        Rect windowRect = new Rect(
+            Screen.width / 1.66f + margin,
+            margin,
+            Screen.width / 1.66f - (margin * 2),
             Screen.height - (margin * 2)
         );
 
