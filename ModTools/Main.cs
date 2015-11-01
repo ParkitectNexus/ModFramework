@@ -10,8 +10,9 @@ namespace ModTools
 
         public void onEnabled()
         {
-            _go = new GameObject("Mod Tools");
+            _go = new GameObject("ModTools");
 
+            _go.AddComponent<SettingsFull>();
             _go.AddComponent<ObjectBrowser>();
             _go.AddComponent<Console>();
 
@@ -20,6 +21,7 @@ namespace ModTools
 
         public void onDisabled()
         {
+            Debug.Log("destroyed main");
             Object.Destroy(_go);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 namespace ModTools.Tools
@@ -16,13 +17,6 @@ namespace ModTools.Tools
         }
 
         #region Inspector Settings
-
-        /// <summary>
-        /// The hotkey to show and hide the console window.
-        /// </summary>
-        public KeyCode toggleKey = KeyCode.BackQuote;
-        // same as toggleKey on german keyboards 
-        public KeyCode toggleKeyDE = KeyCode.Backslash;
 
         /// <summary>
         /// Whether to open the window by shaking the device (mobile-only).
@@ -50,8 +44,8 @@ namespace ModTools.Tools
 
         readonly List<Log> logs = new List<Log>();
         Vector2 scrollPosition;
-        bool visible = false;
-        bool collapse;
+        private bool _visible = false;
+        private bool _collapse;
 
         // Visual elements:
 
@@ -70,7 +64,29 @@ namespace ModTools.Tools
         static readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
 
         readonly Rect titleBarRect = new Rect(0, 0, 10000, 20);
-        Rect windowRect = new Rect(Screen.width / 1.66f + margin, margin, Screen.width / 1.66f - (margin * 2), Screen.height - (margin * 2));
+        Rect windowRect = new Rect(
+            Screen.width / 2 - (Screen.width / 1.66f - (margin * 2)) / 2 + margin, 
+            margin, 
+            Screen.width / 1.66f - (margin * 2), 
+            Screen.height - (margin * 2)
+        );
+
+        public SettingsFull _settings = null;
+
+        public void Start()
+        {
+            Debug.Log("Mod tools console start");
+            StartCoroutine(WaitForSettingsToSet());
+        }
+
+        private IEnumerator WaitForSettingsToSet()
+        {
+            while (_settings == null)
+            {
+                _settings = FindObjectOfType<SettingsFull>();
+                yield return new UnityEngine.WaitForSeconds(1);
+            }
+        }
 
         void OnEnable()
         {
@@ -84,24 +100,38 @@ namespace ModTools.Tools
 
         void Update()
         {
-            if (Input.GetKeyDown(toggleKey) || Input.GetKeyDown(toggleKeyDE))
+            if (_settings != null)
             {
-                visible = !visible;
+                if (Input.GetKeyDown(_settings.toggleKey) || Input.GetKeyDown(_settings.toggleKeyDE))
+                {
+                    _visible = (_settings.showConsole == true) ? !_visible : false;
+                }
             }
 
             if (shakeToOpen && Input.acceleration.sqrMagnitude > shakeAcceleration)
             {
-                visible = true;
+                _visible = true;
             }
         }
 
         void OnGUI()
         {
-            if (!visible)
+            if (!_visible)
             {
                 return;
             }
+            if (_settings != null && _settings.debugKeyCode == true) debugKeyCodeOnPressed();
             windowRect = GUILayout.Window(123456, windowRect, DrawConsoleWindow, windowTitle);
+        }
+
+        void debugKeyCodeOnPressed()
+        {
+            Event e = Event.current;
+            if (e.isKey)
+            {
+                Debug.Log("Detected key code: " + e.keyCode.ToString());
+            }
+                
         }
 
         /// <summary>
@@ -130,7 +160,7 @@ namespace ModTools.Tools
                 var log = logs[i];
 
                 // Combine identical messages if collapse option is chosen.
-                if (collapse && i > 0)
+                if (_collapse && i > 0)
                 {
                     var previousMessage = logs[i - 1].message;
 
@@ -162,7 +192,7 @@ namespace ModTools.Tools
                 logs.Clear();
             }
 
-            collapse = GUILayout.Toggle(collapse, collapseLabel, GUILayout.ExpandWidth(false));
+            _collapse = GUILayout.Toggle(_collapse, collapseLabel, GUILayout.ExpandWidth(false));
 
             GUILayout.EndHorizontal();
         }
