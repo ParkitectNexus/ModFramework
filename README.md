@@ -6,6 +6,10 @@ A Parkitect Game Modification which offers the ability to:
 * get game objects browser
 * toggle tools gui on/off
 
-## Contributors
+## GUI Toggle Keys
+* Backquote (international key)
+* Circumflex (german key)
+
+### Contributors
 * Luuk Hollemann @ [ParkitectNexus](https://github.com/ParkitectNexus/ModTools)
 * Martin 'yokumo' Kelm  @ [parkitectLab](https://github.com/parkitectLab/modTools)
