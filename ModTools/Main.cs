@@ -15,13 +15,11 @@ namespace ModTools
             _go.AddComponent<Tools.Settings.Global>();
             _go.AddComponent<ObjectBrowser>();
             _go.AddComponent<Console>();
-
-            Debug.Log(_go);
         }
 
         public void onDisabled()
         {
-            Debug.Log("destroyed main");
+            UnityEngine.Debug.Log("destroyed main");
             Object.Destroy(_go);
         }
 
