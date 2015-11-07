@@ -10,6 +10,9 @@ A Parkitect Game Modification which offers the ability to:
 * Backquote (international key)
 * Circumflex (german key)
 
+## Settings GUI Shortcut
+* LeftControl Key + GUI Toggle Key
+
 ### Contributors
 * Luuk Hollemann @ [ParkitectNexus](https://github.com/ParkitectNexus/ModTools)
 * Martin 'yokumo' Kelm  @ [parkitectLab](https://github.com/parkitectLab/modTools)
