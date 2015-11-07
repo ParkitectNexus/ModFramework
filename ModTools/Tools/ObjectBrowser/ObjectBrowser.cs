@@ -45,7 +45,7 @@ namespace ModTools.Tools.ObjectBrowser
 
         private void Update()
         {
-            if (_settings != null)
+            if (_settings != null && _settings.isActive == false)
             {
                 if (Input.GetKeyDown(_settings.toggleKey) || Input.GetKeyDown(_settings.toggleKeyDE))
                 {

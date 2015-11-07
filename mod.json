@@ -1,7 +1,7 @@
 {
     "BaseDir": "ModTools",
     "EntryPoint": "ModTools.Main",
-    "IsEnabled": true,
+    "IsEnabled": false,
     "IsDevelopment": true,
     "Name": "Mod Tools",
     "Project": "ModTools.csproj"
