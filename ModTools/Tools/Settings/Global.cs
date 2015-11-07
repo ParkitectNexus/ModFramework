@@ -52,10 +52,19 @@ namespace ModTools.Tools.Settings
         /// </summary>
         private Rect _window = new Rect(50, 50, 1, 1);
 
+        /// <summary>
+        /// Settings data object.
+        /// </summary>
+        private Settings.Data _data = new Settings.Data();
+
         #endregion
 
         void Start()
         {
+            _data.settings = this;
+            _data.addHandle("global");
+            _data.loadByHandles();
+
             // set window to center of screen with default size
             const int windowHeight = 140;
             const int windowWidth = 320;
@@ -65,6 +74,11 @@ namespace ModTools.Tools.Settings
                 windowWidth, 
                 windowHeight
            );
+        }
+
+        void OnDisable()
+        {
+            _data.saveByHandles();
         }
 
         void Update()
