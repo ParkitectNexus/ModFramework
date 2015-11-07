@@ -64,24 +64,13 @@ namespace ModTools.Tools
         static readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
 
         readonly Rect titleBarRect = new Rect(0, 0, 10000, 20);
-        /*Rect windowRect = new Rect(
-            Screen.width / 2 - (Screen.width / 1.66f - (margin * 2)) / 2 + margin, 
-            margin, 
-            Screen.width / 1.66f - (margin * 2), 
-            Screen.height - (margin * 2)
-        );*/
-        Rect windowRect = new Rect(
-            Screen.width / 1.66f + margin,
-            margin,
-            Screen.width / 1.66f - (margin * 2),
-            Screen.height - (margin * 2)
-        );
+ 
+        Rect windowRect;
 
         public Settings.Global _settings = null;
 
         public void Start()
         {
-            Debug.Log("Mod tools console start");
             StartCoroutine(WaitForSettingsToSet());
         }
 
@@ -92,6 +81,24 @@ namespace ModTools.Tools
                 _settings = FindObjectOfType<Tools.Settings.Global>();
                 yield return new UnityEngine.WaitForSeconds(1);
             }
+        }
+
+        public void setWindowRect()
+        {
+            float leftPos;
+            if (_settings.showObjectBrowser == false)
+            {
+                leftPos = Screen.width / 2 - (Screen.width / 1.66f - (margin * 2)) / 2 + margin;
+            } else
+            {
+                leftPos = Screen.width / 1.66f + margin;
+            }
+            windowRect = new Rect(
+                leftPos,
+                margin,
+                Screen.width / 1.66f - (margin * 2),
+                Screen.height - (margin * 2)
+            );
         }
 
         void OnEnable()
@@ -108,9 +115,11 @@ namespace ModTools.Tools
         {
             if (_settings != null && _settings.isActive == false)
             {
+                if (_settings.debugKeyCode == true) debugKeyCodeOnPressed();
                 if (Input.GetKeyDown(_settings.toggleKey) || Input.GetKeyDown(_settings.toggleKeyDE))
                 {
                     _visible = (_settings.showConsole == true) ? !_visible : false;
+                    if (_visible == true) setWindowRect();
                 }
             }
 
@@ -123,21 +132,14 @@ namespace ModTools.Tools
         void OnGUI()
         {
             if (!_visible)
-            {
                 return;
-            }
-            if (_settings != null && _settings.debugKeyCode == true) debugKeyCodeOnPressed();
             windowRect = GUILayout.Window(123456, windowRect, DrawConsoleWindow, windowTitle);
         }
 
         void debugKeyCodeOnPressed()
         {
             Event e = Event.current;
-            if (e.isKey)
-            {
-                Debug.Log("Detected key code: " + e.keyCode.ToString());
-            }
-                
+            if (e.isKey) Debug.Log("Detected key code: " + e.keyCode.ToString());                
         }
 
         /// <summary>

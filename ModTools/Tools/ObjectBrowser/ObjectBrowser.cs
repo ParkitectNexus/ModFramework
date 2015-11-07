@@ -13,7 +13,7 @@ namespace ModTools.Tools.ObjectBrowser
         private readonly Rect _titleBarRect = new Rect(0, 0, 10000, 20);
         Vector2 _scrollPosition;
 
-        Rect _windowRect = new Rect(20, 20, Screen.width / 1.66f - (20 * 2), Screen.height - (20 * 2));
+        Rect _windowRect;
 
         private bool _filterJunk = false;
 
@@ -29,7 +29,6 @@ namespace ModTools.Tools.ObjectBrowser
 
         void Start()
         {
-            Debug.Log("Mod tools browser start");
             //SceneRoots();
             StartCoroutine(WaitForSettingsToSet());
         }
@@ -43,6 +42,20 @@ namespace ModTools.Tools.ObjectBrowser
             }
         }
 
+        public void setWindowRect()
+        {
+            float leftPos;
+            if (_settings.showConsole == false)
+            {
+                leftPos = Screen.width / 2 - (Screen.width / 1.66f - (20 * 2)) / 2;
+            }
+            else
+            {
+                leftPos = 20;
+            }
+            _windowRect = new Rect(leftPos, 20, Screen.width / 1.66f - (20 * 2), Screen.height - (20 * 2));
+        }
+
         private void Update()
         {
             if (_settings != null && _settings.isActive == false)
@@ -50,6 +63,7 @@ namespace ModTools.Tools.ObjectBrowser
                 if (Input.GetKeyDown(_settings.toggleKey) || Input.GetKeyDown(_settings.toggleKeyDE))
                 {
                     _visible = (_settings.showObjectBrowser) ? !_visible : false;
+                    if (_visible == true) setWindowRect();
                 }
             }
         }
