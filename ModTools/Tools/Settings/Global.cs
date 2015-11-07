@@ -77,7 +77,6 @@ namespace ModTools.Tools.Settings
 
             if (isActive == true && (Input.GetKeyDown(toggleKey) || Input.GetKeyDown(toggleKeyDE)))
             {
-                Debug.Log(234234);
                 _showWindow = !_showWindow;
             }
         }
