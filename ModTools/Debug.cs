@@ -80,16 +80,18 @@ public static class Debug
 
     static public void LogMT(string text)
     {
-
-        text = textPrefix + ((showTime) ? " " + DateTime.Now.ToString("HH:mm:ss") : "") + ": " + text;
-
-        if (consoleOnly)
+        if (IsEnable())
         {
-            UnityEngine.Debug.Log(text);
-        }
-        else
-        {
-            Parkitect.UI.NotificationBar.Instance.addNotification(text);
+            text = textPrefix + ((showTime) ? " " + DateTime.Now.ToString("HH:mm:ss") : "") + ": " + text;
+
+            if (consoleOnly)
+            {
+                UnityEngine.Debug.Log(text);
+            }
+            else
+            {
+                Parkitect.UI.NotificationBar.Instance.addNotification(text);
+            }
         }
     }
 
