@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ModFramework")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ModTools")]
+[assembly: AssemblyDescription("Parkitect Game Modification")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ModFramework")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyProduct("ModTools")]
+[assembly: AssemblyCopyright("Copyright © ParkitectNexus 2015, Portions Copyright © Martin 'yokumo' Kelm 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -7,15 +7,13 @@ namespace ModTools.Tools.ObjectBrowser
 {
     class ObjectBrowser : MonoBehaviour
     {
-        private KeyCode _toggleKey = KeyCode.BackQuote;
         private bool _visible = false;
 
         // UI stuff
         private readonly Rect _titleBarRect = new Rect(0, 0, 10000, 20);
         Vector2 _scrollPosition;
 
-
-        Rect _windowRect = new Rect(20, 20, Screen.width / 1.66f - (20 * 2), Screen.height - (20 * 2));
+        Rect _windowRect;
 
         private bool _filterJunk = false;
 
@@ -25,24 +23,54 @@ namespace ModTools.Tools.ObjectBrowser
 
         private List<GameObjectTree> _gos = new List<GameObjectTree>(); 
 
-        private List<GameObject> open = new List<GameObject>(); 
+        private List<GameObject> open = new List<GameObject>();
+
+        private Settings.Global _settings = null;
 
         void Start()
         {
             //SceneRoots();
+            StartCoroutine(WaitForSettingsToSet());
+        }
+
+        private IEnumerator WaitForSettingsToSet()
+        {
+            while (_settings == null)
+            {
+                _settings = FindObjectOfType<Settings.Global>();
+                yield return new UnityEngine.WaitForSeconds(1);
+            }
+        }
+
+        public void setWindowRect()
+        {
+            float leftPos;
+            if (_settings.showConsole == false)
+            {
+                leftPos = Screen.width / 2 - (Screen.width / 1.66f - (20 * 2)) / 2;
+            }
+            else
+            {
+                leftPos = 20;
+            }
+            _windowRect = new Rect(leftPos, 20, Screen.width / 1.66f - (20 * 2), Screen.height - (20 * 2));
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(_toggleKey))
+            if (_settings != null && _settings.isActive == false)
             {
-                _visible = !_visible;
+                if (Input.GetKeyDown(_settings.toggleKey) || Input.GetKeyDown(_settings.toggleKeyDE))
+                {
+                    _visible = (_settings.showObjectBrowser) ? !_visible : false;
+                    if (_visible == true) setWindowRect();
+                }
             }
         }
         
         void OnGUI()
         {
-            if(_visible)
+            if (_visible)
                 _windowRect = GUILayout.Window(123457, _windowRect, DrawConsoleWindow, "Game Object Browser");
         }
 

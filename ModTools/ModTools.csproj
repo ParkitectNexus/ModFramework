@@ -44,10 +44,18 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\Parkitect_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Parkitect_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Debug.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Settings\Data.cs" />
+    <Compile Include="Tools\Settings\FilesHandler.cs" />
+    <Compile Include="Tools\Settings\Global.cs" />
     <Compile Include="Tools\Console.cs" />
     <Compile Include="Tools\ObjectBrowser\Filter.cs" />
     <Compile Include="Tools\ObjectBrowser\ObjectBrowser.cs" />
@@ -55,6 +63,7 @@
     <Compile Include="Tools\ObjectBrowser\Tree.cs" />
     <Compile Include="Tools\ObjectBrowser\TreeBuilder.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
